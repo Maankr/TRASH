@@ -8,7 +8,6 @@ class HomePage(BasePage):
         return [p.text for p in self.finds(HomeLocators.PRICES)]
 
     def change_currency(self):
-        button = self.wait.until(EC.element_to_be_clickable(HomeLocators.CURRENCY_BTN))
         self.click(HomeLocators.CURRENCY_BTN)
         currencies = self.finds(HomeLocators.CURRENCIES)
         self.wait.until(EC.element_to_be_clickable(currencies[1]))

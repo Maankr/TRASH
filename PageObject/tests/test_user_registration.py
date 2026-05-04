@@ -6,6 +6,9 @@ def test_user_registration(driver, base_url):
     page = RegisterPage(driver)
     page.open(base_url + "registration")
 
-    email = f"test{random.randint(1,10000)}@mail.com"
+    email = f"test{random.randint(1, 10000)}@mail.com"
 
-    page.register("John", "Doe", email, "Password123!")
+    page.register("Nik", "Dfee", email, "Password187654623!")
+
+    # Проверка успешной регистрации
+    assert page.is_registration_successful(), "User registration failed"

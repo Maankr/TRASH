@@ -27,7 +27,6 @@ class AdminProductsPage(BasePage):
         self._switch_to_default_content()
 
         self.wait.until(EC.invisibility_of_element_located(AdminProductsLocators.WAIT_PRODUCT_ADD))
-
         self.wait.until(EC.presence_of_element_located(AdminProductsLocators.PRODUCT_NAME))
         self.type(AdminProductsLocators.PRODUCT_NAME, name)
         self.click(AdminProductsLocators.SAVE)
@@ -39,6 +38,10 @@ class AdminProductsPage(BasePage):
         self.wait.until(EC.element_to_be_clickable(AdminProductsLocators.CONFIRM_DELETE))
         self.click(AdminProductsLocators.CONFIRM_DELETE)
 
+    def is_product_added(self):
+        self.wait.until(EC.presence_of_element_located(AdminProductsLocators.ADD_SUCCESS))
+        return True
+
     def is_product_deleted(self):
-        self.wait.until(EC.presence_of_element_located(AdminProductsLocators.DELITE_TRUE))
+        self.wait.until(EC.presence_of_element_located(AdminProductsLocators.DELETE_SUCCESS))
         return True
