@@ -8,4 +8,4 @@ class ProductPage(BasePage):
         self.click(ProductLocators.ADD_TO_CART)
 
     def is_added(self):
-        return self.find(ProductLocators.CART)
+        return self.is_visible(ProductLocators.CART)

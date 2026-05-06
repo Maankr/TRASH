@@ -10,4 +10,4 @@ class AdminLoginPage(BasePage):
         self.click(AdminLoginLocators.SUBMIT)
 
     def is_logged_in(self):
-        return self.find(AdminLoginLocators.DASHBOARD)
+        return self.is_visible(AdminLoginLocators.DASHBOARD)

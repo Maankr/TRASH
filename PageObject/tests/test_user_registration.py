@@ -10,4 +10,4 @@ def test_user_registration(driver, base_url):
 
     page.register("Nik", "Dfee", email, "Password187654623!")
 
-    assert page.is_registration_successful(), "User registration failed"
+    assert page.is_registration_successful()
