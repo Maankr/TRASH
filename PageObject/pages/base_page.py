@@ -1,0 +1,32 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+class BasePage:
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
+
+    def open(self, url):
+        self.driver.get(url)
+
+    def find(self, locator):
+        return self.wait.until(EC.visibility_of_element_located(locator))
+
+    def finds(self, locator):
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
+
+    def click(self, locator):
+        element = self.wait.until(
+            EC.element_to_be_clickable(locator)
+        )
+        element.click()
+
+    def type(self, locator, text):
+        self.find(locator).send_keys(text)
+
+        # нужно для прокрутка до чек-бокса при регистрации нового пользователя
+    def scroll_to_bottom_and_check_element(self, locator):
+         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+         return self.wait.until(EC.visibility_of_element_located(locator))
