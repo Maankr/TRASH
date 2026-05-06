@@ -1,8 +1,6 @@
 from pages.base_page import BasePage
 from locators.register_locators import RegisterLocators
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
 
 
 class RegisterPage(BasePage):
@@ -16,7 +14,7 @@ class RegisterPage(BasePage):
 
         self.scroll_to_bottom_and_check_element(RegisterLocators.GDPR_CHECKBOX)
 
-        # отмечаем чекбоксы обязательные при регистрации
+        # отмечаем чекбоксы обязательные при регистрации, без них регистрация не проходит
         self._check_checkbox(RegisterLocators.GDPR_CHECKBOX)
         self._check_checkbox(RegisterLocators.CUSTOMER_PRIVACY_CHECKBOX)
 
@@ -29,3 +27,4 @@ class RegisterPage(BasePage):
     def is_registration_successful(self):
             self.wait.until(EC.visibility_of_element_located(RegisterLocators.USER_NAME))
             self.wait.until(EC.visibility_of_element_located(RegisterLocators.SIGN_OUT_BUTTON))
+            return True
