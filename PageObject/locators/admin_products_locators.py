@@ -15,6 +15,7 @@ class AdminProductsLocators:
     FIND_DELETE = (By.CSS_SELECTOR, ".dropdown-toggle-dots")
     DELETE = (By.CSS_SELECTOR, ".grid-delete-row-link")
     CONFIRM_DELETE = (By.CSS_SELECTOR, ".btn-confirm-submit")
-    DELETE_SUCCESS = (By.CSS_SELECTOR, ".alert-success")
 
-    ADD_SUCCESS = (By.CSS_SELECTOR, ".alert-success")
+    # по allert проверка не проходит и не может найти сообщение поэтому тест падает
+    DELETE_SUCCESS = (By.XPATH, "//div[@role='alert']//p[contains(.,'Successful')]")
+    ADD_SUCCESS = (By.XPATH, "//div[@role='alert']//p[contains(.,'Successful')]")
